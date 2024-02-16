@@ -11,6 +11,11 @@
 		462640082B7F90EF00F5F22C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640072B7F90EF00F5F22C /* ContentView.swift */; };
 		4626400A2B7F90EF00F5F22C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462640092B7F90EF00F5F22C /* Assets.xcassets */; };
 		4626400D2B7F90EF00F5F22C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4626400C2B7F90EF00F5F22C /* Preview Assets.xcassets */; };
+		462640152B7F918800F5F22C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640142B7F918800F5F22C /* Models.swift */; };
+		462640172B7F971100F5F22C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640162B7F971100F5F22C /* APIManager.swift */; };
+		4626401A2B7F997300F5F22C /* CharactersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640192B7F997300F5F22C /* CharactersListView.swift */; };
+		4626401C2B7F998000F5F22C /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626401B2B7F998000F5F22C /* CharactersListViewModel.swift */; };
+		4626401E2B7FA3C300F5F22C /* CharactersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626401D2B7FA3C300F5F22C /* CharactersListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		462640072B7F90EF00F5F22C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		462640092B7F90EF00F5F22C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4626400C2B7F90EF00F5F22C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		462640142B7F918800F5F22C /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		462640162B7F971100F5F22C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		462640192B7F997300F5F22C /* CharactersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListView.swift; sourceTree = "<group>"; };
+		4626401B2B7F998000F5F22C /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
+		4626401D2B7FA3C300F5F22C /* CharactersListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,9 @@
 		462640042B7F90EF00F5F22C /* RickAndMortyTask */ = {
 			isa = PBXGroup;
 			children = (
+				462640162B7F971100F5F22C /* APIManager.swift */,
+				462640182B7F995800F5F22C /* Views */,
+				462640132B7F916500F5F22C /* Models */,
 				462640052B7F90EF00F5F22C /* RickAndMortyTaskApp.swift */,
 				462640072B7F90EF00F5F22C /* ContentView.swift */,
 				462640092B7F90EF00F5F22C /* Assets.xcassets */,
@@ -65,6 +78,24 @@
 				4626400C2B7F90EF00F5F22C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		462640132B7F916500F5F22C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				462640142B7F918800F5F22C /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		462640182B7F995800F5F22C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				462640192B7F997300F5F22C /* CharactersListView.swift */,
+				4626401B2B7F998000F5F22C /* CharactersListViewModel.swift */,
+				4626401D2B7FA3C300F5F22C /* CharactersListCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +168,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4626401C2B7F998000F5F22C /* CharactersListViewModel.swift in Sources */,
+				462640172B7F971100F5F22C /* APIManager.swift in Sources */,
+				4626401A2B7F997300F5F22C /* CharactersListView.swift in Sources */,
+				462640152B7F918800F5F22C /* Models.swift in Sources */,
 				462640082B7F90EF00F5F22C /* ContentView.swift in Sources */,
+				4626401E2B7FA3C300F5F22C /* CharactersListCell.swift in Sources */,
 				462640062B7F90EF00F5F22C /* RickAndMortyTaskApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
