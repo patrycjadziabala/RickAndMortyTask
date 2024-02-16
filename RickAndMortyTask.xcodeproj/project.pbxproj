@@ -16,6 +16,7 @@
 		4626401A2B7F997300F5F22C /* CharactersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640192B7F997300F5F22C /* CharactersListView.swift */; };
 		4626401C2B7F998000F5F22C /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626401B2B7F998000F5F22C /* CharactersListViewModel.swift */; };
 		4626401E2B7FA3C300F5F22C /* CharactersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626401D2B7FA3C300F5F22C /* CharactersListCell.swift */; };
+		462640202B7FC22000F5F22C /* CharactersDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626401F2B7FC22000F5F22C /* CharactersDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		462640192B7F997300F5F22C /* CharactersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListView.swift; sourceTree = "<group>"; };
 		4626401B2B7F998000F5F22C /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 		4626401D2B7FA3C300F5F22C /* CharactersListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListCell.swift; sourceTree = "<group>"; };
+		4626401F2B7FC22000F5F22C /* CharactersDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				462640192B7F997300F5F22C /* CharactersListView.swift */,
 				4626401B2B7F998000F5F22C /* CharactersListViewModel.swift */,
 				4626401D2B7FA3C300F5F22C /* CharactersListCell.swift */,
+				4626401F2B7FC22000F5F22C /* CharactersDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				462640082B7F90EF00F5F22C /* ContentView.swift in Sources */,
 				4626401E2B7FA3C300F5F22C /* CharactersListCell.swift in Sources */,
 				462640062B7F90EF00F5F22C /* RickAndMortyTaskApp.swift in Sources */,
+				462640202B7FC22000F5F22C /* CharactersDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

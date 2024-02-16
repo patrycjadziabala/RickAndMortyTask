@@ -16,24 +16,28 @@ struct CharactersListView: View {
     }
     
     var body: some View {
-        ScrollView {
+        NavigationStack {
             Text("Characters List")
-            ForEach (viewModel.characterList) { character in
-                CharactersListCell(character: character)
+            List(viewModel.characterList, id: \.id) {
+                character in
+                NavigationLink {
+                    CharactersDetailsView(character: character)
+                } label: {
+                    CharactersListCell(character: character)
+                }
             }
         }
     }
-
     
     func fetchCharacters() {
         Task {
             do {
-               try await viewModel.fetchCharacters()
+                try await viewModel.fetchCharacters()
             } catch {
                 print(error.localizedDescription)
             }
         }
-     
+        
     }
 }
 

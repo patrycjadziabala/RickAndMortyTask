@@ -11,24 +11,22 @@ struct CharactersListCell: View {
     let character: Character
     
     var body: some View {
-        HStack (alignment: .center, spacing: 20) {
-            ZStack {
-                Circle()
-                    .fill(Color(.blue))
-                    .opacity(0.6)
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
+        VStack {
+            HStack {
                 AsyncImage(url: URL(string: character.image)) { image in
                     image.resizable()
-                        .frame(maxWidth: 15, maxHeight: 15)
+                        .frame(maxWidth: 75, maxHeight: 75)
+                        .cornerRadius(45)
+                        .padding()
                 } placeholder: {
                     ProgressView()
                 }
+                Spacer()
+                Text(character.name)
+                    .frame(alignment: .trailing)
             }
             Divider()
                 .foregroundColor(.gray)
-            Spacer()
-            Text(character.name)
         }
     }
 }
