@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CharactersListView: View {
     @ObservedObject var viewModel: CharactersListViewModel
-    
+        
     init(viewModel: CharactersListViewModel) {
         self.viewModel = viewModel
         fetchCharacters()
@@ -18,10 +18,10 @@ struct CharactersListView: View {
     var body: some View {
         NavigationStack {
             Text("Characters List")
-            List(viewModel.characterList, id: \.id) {
+            List(viewModel.charactersList, id: \.id) {
                 character in
                 NavigationLink {
-                    CharactersDetailsView(character: character)
+                    CharactersDetailsView(viewModel: CharacterDetailsViewModel(), character: character)
                 } label: {
                     CharactersListCell(character: character)
                 }

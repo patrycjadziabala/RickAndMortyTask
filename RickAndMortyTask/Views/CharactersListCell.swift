@@ -33,6 +33,6 @@ struct CharactersListCell: View {
 
 struct CharactersListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersListCell(character: Character(id: 1, name: "", status: "", gender: "", origin: OriginModel(name: "", url: "") , location: LocationModel(name: "", url: "") , image: ""))
+        CharactersListCell(character: Character(id: 1, name: "", status: "", gender: "", origin: OriginModel(name: "", url: "") , location: LocationModel(name: "", url: "") , image: "", episode: [""]))
     }
 }

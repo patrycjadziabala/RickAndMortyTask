@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CharactersDetailsView: View {
+    @ObservedObject var viewModel: CharacterDetailsViewModel
     let character: Character
     
     var body: some View {
@@ -30,9 +31,7 @@ struct CharactersDetailsView: View {
                         Divider()
                         Text("Gender")
                         Divider()
-                       
-                            Text("Origin")
-                        
+                        Text("Origin")
                         Divider()
                         Text("Location")
                         Divider()
@@ -56,12 +55,40 @@ struct CharactersDetailsView: View {
                     .padding()
                 } //hstack
             } //vstack
+            Text("Seen in episodes:")
+            ForEach(character.episode, id: \.self) { urlString in
+                
+                NavigationLink {
+                    
+                } label: {
+                    
+                }
+
+                
+                
+//                NavigationLink(value: item) {
+//                    Button {
+//                        let episodeId = String(item.components(separatedBy: "/").last ?? "")
+//                        Task {
+//                            do {
+//                                viewModel.fetchEpisodeInfo(id: episodeId)
+//                            } catch {
+//                                print(error.localizedDescription)
+//                            }
+//                    } label: {
+//                        Text(item.components(separatedBy: "/").last ?? "")
+//                    }
+//                }
+//                .navigationDestination(isPresented: <#T##SwiftUI.Binding<Bool>#>) {
+//                    EpisodeDetailsView(episode: <#T##EpisodeModel#>)
+//                }
+            }
         } //scrollview
     }
 }
 
 struct CharactersDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersDetailsView(character: Character(id: 1, name: "", status: "", gender: "", origin: OriginModel(name: "", url: ""), location: LocationModel(name: "", url: ""), image: ""))
+        CharactersDetailsView(viewModel: CharacterDetailsViewModel(), character: Character(id: 1, name: "", status: "", gender: "", origin: OriginModel(name: "", url: ""), location: LocationModel(name: "", url: ""), image: "", episode: [""]))
     }
 }

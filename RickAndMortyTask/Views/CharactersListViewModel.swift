@@ -6,19 +6,22 @@
 //
 
 import Foundation
+import SwiftUI
 
+// TODO move mainactor to view
 @MainActor class CharactersListViewModel: ObservableObject {
     private let apiManager: APIManagerProtocol
-    @Published var characterList = [Character]()
+    @Published var charactersList = [Character]()
+    @Published var episodesList = [String]()
     
     init(apiManager: APIManagerProtocol) {
         self.apiManager = apiManager
     }
     
     func fetchCharacters() async throws {
-        guard let downloadedCharacters: APIModel = await apiManager.fetchCharactersList() else {
+        guard let downloadedCharacters: APIModel = try await apiManager.fetchData(endpoint: .character, id: nil) else {
             return
         }
-        characterList = downloadedCharacters.results
+        charactersList = downloadedCharacters.results
     }
 }
