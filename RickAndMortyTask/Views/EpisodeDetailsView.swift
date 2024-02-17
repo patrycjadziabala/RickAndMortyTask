@@ -9,7 +9,6 @@ import SwiftUI
 
 struct EpisodeDetailsView: View {
     @ObservedObject var viewModel: EpisodeDetailsViewModel
-    //    let episode: EpisodeModel
     
     init(viewModel: EpisodeDetailsViewModel) {
         self.viewModel = viewModel
@@ -26,17 +25,15 @@ struct EpisodeDetailsView: View {
                     }
                     Divider()
                         .foregroundColor(.gray)
-                }
-                VStack {
-                    if let episode = viewModel.episode {
-                        Text(episode.name)
-                        Text(episode.air_date)
-                        Text(episode.episode)
+                    VStack {
+                        if let episode = viewModel.episode {
+                            Text(episode.name)
+                            Text(episode.air_date)
+                            Text(episode.episode)
+                        }
                     }
                 }
-                //                ForEach(episode.characters) { character in
-                //                    Text("")
-                //                }
+                Text("Number of characters in episode: \(viewModel.getNumberOfCharactersInEpisode())")
             }
             
         }.onAppear {

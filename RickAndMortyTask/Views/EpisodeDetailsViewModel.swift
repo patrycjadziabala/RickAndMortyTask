@@ -23,4 +23,8 @@ class EpisodeDetailsViewModel: ObservableObject {
         }
         episode = downloadedEpisode
     }
+    
+    func getNumberOfCharactersInEpisode() -> Int {
+        episode?.characters.count ?? 0
+    }
 }
