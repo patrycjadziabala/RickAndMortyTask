@@ -9,6 +9,7 @@ import Foundation
 
 protocol APIManagerProtocol {
     func fetchData<T: Codable>(endpoint: Endpoint, id: String?) async throws -> T?
+    func fetchData<T: Codable>(url: String) async throws -> T?
 }
 
 enum NetworkError: Error {
@@ -61,6 +62,23 @@ class APIManager: APIManagerProtocol {
             urlString = url
         }
         guard let url = URL(string: urlString) else {
+            throw NetworkError.invalidURL
+        }
+        let (data, response) = try await URLSession.shared.data(from: url)
+        guard let response = response as? HTTPURLResponse else {
+            throw NetworkError.badResponse
+        }
+        guard response.statusCode >= 200 && response.statusCode < 300 else {
+            throw NetworkError.badStatus
+        }
+        guard let decodedResponse = try? JSONDecoder().decode(T.self, from: data) else {
+            throw NetworkError.failedToDecodeResponse
+        }
+        return decodedResponse
+    }
+    
+    func fetchData<T: Codable>(url: String) async throws -> T? {
+        guard let url = URL(string: url) else {
             throw NetworkError.invalidURL
         }
         let (data, response) = try await URLSession.shared.data(from: url)

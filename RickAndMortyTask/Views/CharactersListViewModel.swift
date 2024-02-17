@@ -14,14 +14,25 @@ import SwiftUI
     @Published var charactersList = [Character]()
     @Published var episodesList = [String]()
     
+    private var nextPageUrlString: String?
+    
     init(apiManager: APIManagerProtocol) {
         self.apiManager = apiManager
     }
     
-    func fetchCharacters() async throws {
-        guard let downloadedCharacters: APIModel = try await apiManager.fetchData(endpoint: .character, id: nil) else {
-            return
+    func fetchNextPageCharacters() async throws {
+        if let nextPage = nextPageUrlString {
+            guard let downloadedCharacters: APIModel = try await apiManager.fetchData(url: nextPage) else {
+                return
+            }
+            nextPageUrlString = downloadedCharacters.info.next
+            charactersList.append(contentsOf: downloadedCharacters.results)
+        } else {
+            guard let downloadedCharacters: APIModel = try await apiManager.fetchData(endpoint: .character, id: nil) else {
+                return
+            }
+            nextPageUrlString = downloadedCharacters.info.next
+            charactersList = downloadedCharacters.results
         }
-        charactersList = downloadedCharacters.results
     }
 }

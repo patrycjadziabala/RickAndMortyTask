@@ -9,29 +9,35 @@ import SwiftUI
 
 struct CharactersListView: View {
     @ObservedObject var viewModel: CharactersListViewModel
-        
+    
     init(viewModel: CharactersListViewModel) {
         self.viewModel = viewModel
         fetchCharacters()
     }
     
     var body: some View {
-            Text("Characters List")
-            List(viewModel.charactersList, id: \.id) {
-                character in
+        Text("Characters List")
+        List {
+            ForEach(viewModel.charactersList, id: \.id) { character in
                 NavigationLink {
                     CharactersDetailsView(viewModel: CharacterDetailsViewModel(character: character))
                 } label: {
                     CharactersListCell(character: character)
                 }
             }
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+                .onAppear {
+                    fetchCharacters()
+                }
+        }
         
     }
     
     func fetchCharacters() {
         Task {
             do {
-                try await viewModel.fetchCharacters()
+                try await viewModel.fetchNextPageCharacters()
             } catch {
                 print(error.localizedDescription)
             }
