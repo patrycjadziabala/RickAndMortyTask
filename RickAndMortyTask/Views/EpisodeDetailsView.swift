@@ -11,6 +11,7 @@ struct EpisodeDetailsView: View {
     @StateObject var viewModel: EpisodeDetailsViewModel = EpisodeDetailsViewModel(apiManager: APIManager())
     @State var id: String
     @State var shouldShowAlert = false
+    @State var shouldShowProgressIndicator = true
     
     init(id: String) {
         self.id = id
@@ -18,8 +19,8 @@ struct EpisodeDetailsView: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem( .fixed(100), alignment: .trailing), GridItem(alignment: .leading)], spacing: 20) {
-                if let episode = viewModel.episode {
+            if let episode = viewModel.episode {
+                LazyVGrid(columns: [GridItem( .fixed(100), alignment: .trailing), GridItem(alignment: .leading)], spacing: 20) {
                     Text("Name:")
                     Text(episode.name)
                         .padding(.leading)
@@ -30,9 +31,16 @@ struct EpisodeDetailsView: View {
                     Text(episode.episode)
                         .padding(.leading)
                 }
+                Text("Number of characters in episode: \(viewModel.getNumberOfCharactersInEpisode())")
             }
-            Text("Number of characters in episode: \(viewModel.getNumberOfCharactersInEpisode())")
-        }.onAppear {
+        }
+        .overlay {
+            ProgressView()
+                .scaleEffect(2, anchor: .center)
+                .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                .hidden(shouldShowProgressIndicator)
+        }
+        .onAppear {
             fetchEpisodeInfo()
         }
         .padding()
@@ -46,6 +54,7 @@ struct EpisodeDetailsView: View {
         Task {
             do {
                 try await viewModel.fetchEpisodeInfo(episodeId: id)
+                shouldShowProgressIndicator = false
             } catch {
                 shouldShowAlert = true
             }

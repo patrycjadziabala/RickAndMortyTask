@@ -10,6 +10,7 @@ import SwiftUI
 struct CharactersListView: View {
     @StateObject var viewModel: CharactersListViewModel = CharactersListViewModel(apiManager: APIManager())
     @State var shouldShowAlert = false
+    @State var shouldShowProgressIndicator = true
     
     var body: some View {
         List {
@@ -20,11 +21,15 @@ struct CharactersListView: View {
                     CharactersListCell(character: character)
                 }
             }
+        }
+        .onAppear {
+            fetchCharacters()
+        }
+        .overlay {
             ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .onAppear {
-                    fetchCharacters()
-                }
+                .scaleEffect(2, anchor: .center)
+                .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                .hidden(shouldShowProgressIndicator)
         }
         .navigationTitle("Characters List")
         .alert(isPresented: $shouldShowAlert) {
@@ -36,6 +41,8 @@ struct CharactersListView: View {
         Task {
             do {
                 try await viewModel.fetchNextPageCharacters()
+                shouldShowProgressIndicator = false
+                print(shouldShowProgressIndicator)
             } catch {
                 shouldShowAlert = true
             }
@@ -51,6 +58,15 @@ struct CharactersListView: View {
               secondaryButton: .cancel(Text("Cancel"), action: {
             shouldShowAlert = false
         }))
+    }
+}
+
+extension View {
+    @ViewBuilder func hidden(_ shouldHide: Bool) -> some View {
+        switch shouldHide {
+        case true: self
+        case false: self.hidden()
+        }
     }
 }
 
