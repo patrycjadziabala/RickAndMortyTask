@@ -21,7 +21,7 @@ struct CharactersListView: View {
             List(viewModel.charactersList, id: \.id) {
                 character in
                 NavigationLink {
-                    CharactersDetailsView(viewModel: CharacterDetailsViewModel(), character: character)
+                    CharactersDetailsView(viewModel: CharacterDetailsViewModel(character: character))
                 } label: {
                     CharactersListCell(character: character)
                 }

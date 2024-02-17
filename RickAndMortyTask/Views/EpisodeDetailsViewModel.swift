@@ -10,13 +10,15 @@ import Foundation
 class EpisodeDetailsViewModel: ObservableObject {
     @Published var episode: EpisodeModel?
     let apiManager: APIManagerProtocol
+    var episodeId: String
     
-    init(apiManager: APIManagerProtocol) {
+    init(apiManager: APIManagerProtocol, episodeId: String) {
         self.apiManager = apiManager
+        self.episodeId = episodeId
     }
     
-    func fetchEpisodeInfo(id: String) async throws {
-        guard let downloadedEpisode: EpisodeModel = try await apiManager.fetchData(endpoint: .episode, id: id) else {
+   @MainActor func fetchEpisodeInfo() async throws {
+        guard let downloadedEpisode: EpisodeModel = try await apiManager.fetchData(endpoint: .episode, id: episodeId) else {
             return
         }
         episode = downloadedEpisode

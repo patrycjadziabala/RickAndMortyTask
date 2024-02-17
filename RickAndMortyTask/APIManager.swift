@@ -39,7 +39,7 @@ class APIManager: APIManagerProtocol {
     
     private func buildUrlString(for endpoint: Endpoint, id: String) -> String? {
         let urlString = baseUrlString.replacingOccurrences(of: "<endpoint>", with: endpoint.rawValue)
-            .appending(id)
+            .appending("/\(id)")
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         guard let urlString = urlString else {
             return nil

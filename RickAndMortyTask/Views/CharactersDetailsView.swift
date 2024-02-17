@@ -9,12 +9,11 @@ import SwiftUI
 
 struct CharactersDetailsView: View {
     @ObservedObject var viewModel: CharacterDetailsViewModel
-    let character: Character
     
     var body: some View {
         ScrollView {
             VStack {
-                AsyncImage(url: URL(string: character.image)) { image in
+                AsyncImage(url: URL(string: viewModel.character.image)) { image in
                     image.resizable()
                         .clipShape(Circle())
                         .frame(width: 360)
@@ -40,55 +39,34 @@ struct CharactersDetailsView: View {
                     .padding()
                     Divider()
                     VStack {
-                        Text(character.name)
+                        Text(viewModel.character.name)
                         Divider()
-                        Text(character.status)
+                        Text(viewModel.character.status)
                         Divider()
-                        Text(character.gender)
+                        Text(viewModel.character.gender)
                         Divider()
-                        Text(character.origin.name)
+                        Text(viewModel.character.origin.name)
                         Divider()
-                        Text(character.location.name)
+                        Text(viewModel.character.location.name)
                         Divider()
                     } //vstack
                     .font(Font.headline.weight(.light))
                     .padding()
                 } //hstack
-            } //vstack
-            Text("Seen in episodes:")
-            ForEach(character.episode, id: \.self) { urlString in
-                
-                NavigationLink {
-                    
-                } label: {
-                    
+                Text("Seen in episodes:")
+                ForEach(viewModel.character.episode, id: \.self) { urlString in
+                    NavigationLink(destination: EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(apiManager: APIManager(), episodeId: viewModel.getEpisodeNumberString(url: urlString) ?? ""))) {
+                        Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
+                    }
                 }
-
-                
-                
-//                NavigationLink(value: item) {
-//                    Button {
-//                        let episodeId = String(item.components(separatedBy: "/").last ?? "")
-//                        Task {
-//                            do {
-//                                viewModel.fetchEpisodeInfo(id: episodeId)
-//                            } catch {
-//                                print(error.localizedDescription)
-//                            }
-//                    } label: {
-//                        Text(item.components(separatedBy: "/").last ?? "")
-//                    }
-//                }
-//                .navigationDestination(isPresented: <#T##SwiftUI.Binding<Bool>#>) {
-//                    EpisodeDetailsView(episode: <#T##EpisodeModel#>)
-//                }
-            }
-        } //scrollview
-    }
+            } //vstack
+        }
+    } //scrollview
 }
+
 
 struct CharactersDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersDetailsView(viewModel: CharacterDetailsViewModel(), character: Character(id: 1, name: "", status: "", gender: "", origin: OriginModel(name: "", url: ""), location: LocationModel(name: "", url: ""), image: "", episode: [""]))
+        CharactersDetailsView(viewModel: CharacterDetailsViewModel(character: Character(id: 1, name: "", status: "", gender: "", origin: OriginModel(name: "", url: ""), location: LocationModel(name: "", url: ""), image: "", episode: [""])))
     }
 }

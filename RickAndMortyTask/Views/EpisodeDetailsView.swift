@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct EpisodeDetailsView: View {
-    let episode: EpisodeModel
+    @ObservedObject var viewModel: EpisodeDetailsViewModel
+    //    let episode: EpisodeModel
+    
+    init(viewModel: EpisodeDetailsViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         ScrollView {
@@ -23,21 +28,35 @@ struct EpisodeDetailsView: View {
                         .foregroundColor(.gray)
                 }
                 VStack {
-                    Text(episode.name)
-                    Text(episode.air_date)
-                    Text(episode.episode)
+                    if let episode = viewModel.episode {
+                        Text(episode.name)
+                        Text(episode.air_date)
+                        Text(episode.episode)
+                    }
                 }
-//                ForEach(episode.characters) { character in
-//                    Text("")
-//                }
+                //                ForEach(episode.characters) { character in
+                //                    Text("")
+                //                }
             }
-           
+            
+        }.onAppear {
+            fetchEpisodeInfo()
+        }
+    }
+    
+    func fetchEpisodeInfo() {
+        Task {
+            do {
+                try await viewModel.fetchEpisodeInfo()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }
 
 struct EpisodeDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        EpisodeDetailsView(episode: EpisodeModel(id: 1, name: "", air_date: "", episode: "", characters: [""]))
+        EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(apiManager: APIManager(), episodeId: ""))
     }
 }
