@@ -10,6 +10,7 @@ import SwiftUI
 struct EpisodeDetailsView: View {
     @StateObject var viewModel: EpisodeDetailsViewModel = EpisodeDetailsViewModel(apiManager: APIManager())
     @State var id: String
+    @State var shouldShowAlert = false
     
     init(id: String) {
         self.id = id
@@ -35,6 +36,9 @@ struct EpisodeDetailsView: View {
             fetchEpisodeInfo()
         }
         .padding()
+        .alert(isPresented: $shouldShowAlert, content: {
+            showAlert()
+        })
         .navigationTitle("Episode Details")
     }
     
@@ -43,9 +47,19 @@ struct EpisodeDetailsView: View {
             do {
                 try await viewModel.fetchEpisodeInfo(episodeId: id)
             } catch {
-                print(error.localizedDescription)
+                shouldShowAlert = true
             }
         }
+    }
+    
+    func showAlert() -> Alert {
+        Alert(title: Text("Something went wrong..."),
+              primaryButton: .default(Text("Retry"), action: {
+            fetchEpisodeInfo()
+        }),
+              secondaryButton: .cancel(Text("Cancel"), action: {
+            shouldShowAlert = false
+        }))
     }
 }
 

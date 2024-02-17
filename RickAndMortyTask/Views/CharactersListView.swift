@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CharactersListView: View {
     @StateObject var viewModel: CharactersListViewModel = CharactersListViewModel(apiManager: APIManager())
+    @State var shouldShowAlert = false
     
     var body: some View {
         List {
@@ -26,6 +27,9 @@ struct CharactersListView: View {
                 }
         }
         .navigationTitle("Characters List")
+        .alert(isPresented: $shouldShowAlert) {
+           showAlert()
+        }
     }
     
     func fetchCharacters() {
@@ -33,10 +37,20 @@ struct CharactersListView: View {
             do {
                 try await viewModel.fetchNextPageCharacters()
             } catch {
-                print(error.localizedDescription)
+                shouldShowAlert = true
             }
         }
         
+    }
+    
+    func showAlert() -> Alert {
+        Alert(title: Text("Something went wrong..."),
+              primaryButton: .default(Text("Retry"), action: {
+            fetchCharacters()
+        }),
+              secondaryButton: .cancel(Text("Cancel"), action: {
+            shouldShowAlert = false
+        }))
     }
 }
 
