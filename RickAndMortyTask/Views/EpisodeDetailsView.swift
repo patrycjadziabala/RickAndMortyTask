@@ -8,42 +8,40 @@
 import SwiftUI
 
 struct EpisodeDetailsView: View {
-    @ObservedObject var viewModel: EpisodeDetailsViewModel
+    @StateObject var viewModel: EpisodeDetailsViewModel = EpisodeDetailsViewModel(apiManager: APIManager())
+    @State var id: String
     
-    init(viewModel: EpisodeDetailsViewModel) {
-        self.viewModel = viewModel
+    init(id: String) {
+        self.id = id
     }
     
     var body: some View {
         ScrollView {
-            VStack {
-                HStack {
-                    VStack {
-                        Text("Name")
-                        Text("Air date")
-                        Text("Episode")
-                    }
-                    Divider()
-                        .foregroundColor(.gray)
-                    VStack {
-                        if let episode = viewModel.episode {
-                            Text(episode.name)
-                            Text(episode.air_date)
-                            Text(episode.episode)
-                        }
-                    }
+            LazyVGrid(columns: [GridItem( .fixed(100), alignment: .trailing), GridItem(alignment: .leading)], spacing: 20) {
+                if let episode = viewModel.episode {
+                    Text("Name:")
+                    Text(episode.name)
+                        .padding(.leading)
+                    Text("Air date:")
+                    Text(episode.air_date)
+                        .padding(.leading)
+                    Text("Episode:")
+                    Text(episode.episode)
+                        .padding(.leading)
                 }
-                Text("Number of characters in episode: \(viewModel.getNumberOfCharactersInEpisode())")
             }
+            Text("Number of characters in episode: \(viewModel.getNumberOfCharactersInEpisode())")
         }.onAppear {
             fetchEpisodeInfo()
         }
+        .padding()
+        .navigationTitle("Episode Details")
     }
     
     func fetchEpisodeInfo() {
         Task {
             do {
-                try await viewModel.fetchEpisodeInfo()
+                try await viewModel.fetchEpisodeInfo(episodeId: id)
             } catch {
                 print(error.localizedDescription)
             }
@@ -53,6 +51,6 @@ struct EpisodeDetailsView: View {
 
 struct EpisodeDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(apiManager: APIManager(), episodeId: ""))
+        EpisodeDetailsView(id: "")
     }
 }

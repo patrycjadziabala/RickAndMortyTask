@@ -12,7 +12,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             Text("Press button to load characters list")
-            NavigationLink(destination: CharactersListView(viewModel: CharactersListViewModel(apiManager: APIManager()))) {
+            NavigationLink(destination: CharactersListView()) {
                 Text("Press here")
             }
         }

@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct CharactersListView: View {
-    @ObservedObject var viewModel: CharactersListViewModel
-//    @State var id: String
-    
-    init(viewModel: CharactersListViewModel) {
-        self.viewModel = viewModel
-    }
+    @StateObject var viewModel: CharactersListViewModel = CharactersListViewModel(apiManager: APIManager())
     
     var body: some View {
         List {

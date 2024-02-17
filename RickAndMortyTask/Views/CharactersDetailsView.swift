@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CharactersDetailsView: View {
     @EnvironmentObject var persistanceManager: PersistenceManager
-    @ObservedObject var viewModel: CharacterDetailsViewModel
+    @StateObject var viewModel: CharacterDetailsViewModel
     
     var body: some View {
         ScrollView {
@@ -23,45 +23,38 @@ struct CharactersDetailsView: View {
                     ProgressView()
                 }
                 Spacer()
-                HStack {
-                    VStack {
-                        Text("Name")
-                        Divider()
-                        Text("Status")
-                        Divider()
-                        Text("Gender")
-                        Divider()
-                        Text("Origin")
-                        Divider()
-                        Text("Location")
-                        Divider()
-                    }
-                    .font(Font.headline.weight(.bold))
-                    .padding()
-                    Divider()
-                    VStack {
-                        Text(viewModel.character.name)
-                        Divider()
-                        Text(viewModel.character.status)
-                        Divider()
-                        Text(viewModel.character.gender)
-                        Divider()
-                        Text(viewModel.character.origin.name)
-                        Divider()
-                        Text(viewModel.character.location.name)
-                        Divider()
-                    }
-                    .font(Font.headline.weight(.light))
-                    .padding()
+                LazyVGrid(columns: [GridItem( .fixed(100), alignment: .leading), GridItem(alignment: .leading)], spacing: 20) {
+                    Text("Name")
+                        .padding(.leading)
+                        .padding(5)
+                    Text(viewModel.character.name)
+                    Text("Status")
+                        .padding(.leading)
+                        .padding(5)
+                    Text(viewModel.character.status)
+                    Text("Gender")
+                        .padding(.leading)
+                        .padding(5)
+                    Text(viewModel.character.gender)
+                    Text("Origin")
+                        .padding(.leading)
+                        .padding(5)
+                    Text(viewModel.character.origin.name)
+                    Text("Location")
+                        .padding(.leading)
+                        .padding(5)
+                    Text(viewModel.character.location.name)
                 }
+//                HStack
                 Text("Seen in episodes:")
                 ForEach(viewModel.character.episode, id: \.self) { urlString in
-                    NavigationLink(destination: EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(apiManager: APIManager(), episodeId: viewModel.getEpisodeNumberString(url: urlString) ?? ""))) {
+                    NavigationLink(destination: EpisodeDetailsView(id: viewModel.getEpisodeNumberString(url: urlString) ?? "")) {
                         Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
                     }
                 }
             }
         }
+        .navigationTitle("Character Details")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
