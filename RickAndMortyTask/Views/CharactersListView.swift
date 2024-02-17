@@ -16,7 +16,7 @@ struct CharactersListView: View {
     }
     
     var body: some View {
-        NavigationStack {
+       
             Text("Characters List")
             List(viewModel.charactersList, id: \.id) {
                 character in
@@ -26,7 +26,7 @@ struct CharactersListView: View {
                     CharactersListCell(character: character)
                 }
             }
-        }
+        
     }
     
     func fetchCharacters() {

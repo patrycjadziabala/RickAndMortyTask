@@ -12,7 +12,7 @@ struct RickAndMortyTaskApp: App {
     
     var body: some Scene {
         WindowGroup {
-            CharactersListView(viewModel: CharactersListViewModel(apiManager: APIManager()))
+            HomeView()
         }
     }
 }

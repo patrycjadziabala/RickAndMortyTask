@@ -21,6 +21,7 @@
 		462640262B80AE1700F5F22C /* EpisodeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640252B80AE1700F5F22C /* EpisodeDetailsView.swift */; };
 		462640282B80D5F500F5F22C /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640272B80D5F500F5F22C /* CharacterDetailsViewModel.swift */; };
 		4626402A2B80DF8600F5F22C /* EpisodeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640292B80DF8600F5F22C /* EpisodeDetailsViewModel.swift */; };
+		4626402C2B80F77C00F5F22C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626402B2B80F77C00F5F22C /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		462640252B80AE1700F5F22C /* EpisodeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsView.swift; sourceTree = "<group>"; };
 		462640272B80D5F500F5F22C /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
 		462640292B80DF8600F5F22C /* EpisodeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewModel.swift; sourceTree = "<group>"; };
+		4626402B2B80F77C00F5F22C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				462640232B80AC9A00F5F22C /* EpisodeCellView.swift */,
 				462640252B80AE1700F5F22C /* EpisodeDetailsView.swift */,
 				462640292B80DF8600F5F22C /* EpisodeDetailsViewModel.swift */,
+				4626402B2B80F77C00F5F22C /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			files = (
 				4626401C2B7F998000F5F22C /* CharactersListViewModel.swift in Sources */,
 				462640172B7F971100F5F22C /* APIManager.swift in Sources */,
+				4626402C2B80F77C00F5F22C /* HomeView.swift in Sources */,
 				4626401A2B7F997300F5F22C /* CharactersListView.swift in Sources */,
 				462640152B7F918800F5F22C /* Models.swift in Sources */,
 				462640082B7F90EF00F5F22C /* ContentView.swift in Sources */,
