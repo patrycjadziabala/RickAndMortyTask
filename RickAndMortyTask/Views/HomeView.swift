@@ -9,14 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        NavigationStack {
+        VStack {
             Text("Press button to load characters list")
-            NavigationLink {
-                CharactersListView(viewModel: CharactersListViewModel(apiManager: APIManager()))
-            } label: {
+            NavigationLink(destination: CharactersListView(viewModel: CharactersListViewModel(apiManager: APIManager()))) {
                 Text("Press here")
             }
         }
+
     }
 }
 

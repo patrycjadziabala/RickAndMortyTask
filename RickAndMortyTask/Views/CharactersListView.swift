@@ -16,7 +16,6 @@ struct CharactersListView: View {
     }
     
     var body: some View {
-       
             Text("Characters List")
             List(viewModel.charactersList, id: \.id) {
                 character in
