@@ -17,7 +17,7 @@ struct InfoModel: Codable {
     let prev: String?
 }
 
-struct Character: Identifiable, Codable {
+struct Character: Identifiable, Codable, Equatable {
     let id: Int
     let name : String
     let status: String
@@ -28,12 +28,12 @@ struct Character: Identifiable, Codable {
     let episode: [String]
 }
 
-struct OriginModel: Codable {
+struct OriginModel: Codable, Equatable {
     let name: String
     let url: String
 }
 
-struct LocationModel: Codable {
+struct LocationModel: Codable, Equatable {
     let name: String
     let url: String
 }

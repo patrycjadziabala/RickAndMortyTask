@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     var body: some View {
         VStack {
             Text("Press button to load characters list")
@@ -15,7 +16,6 @@ struct HomeView: View {
                 Text("Press here")
             }
         }
-
     }
 }
 

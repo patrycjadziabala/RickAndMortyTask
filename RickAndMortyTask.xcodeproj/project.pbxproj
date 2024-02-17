@@ -21,6 +21,7 @@
 		462640282B80D5F500F5F22C /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640272B80D5F500F5F22C /* CharacterDetailsViewModel.swift */; };
 		4626402A2B80DF8600F5F22C /* EpisodeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640292B80DF8600F5F22C /* EpisodeDetailsViewModel.swift */; };
 		4626402C2B80F77C00F5F22C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626402B2B80F77C00F5F22C /* HomeView.swift */; };
+		4626402E2B81077B00F5F22C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626402D2B81077B00F5F22C /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		462640272B80D5F500F5F22C /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
 		462640292B80DF8600F5F22C /* EpisodeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewModel.swift; sourceTree = "<group>"; };
 		4626402B2B80F77C00F5F22C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4626402D2B81077B00F5F22C /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				462640162B7F971100F5F22C /* APIManager.swift */,
+				4626402D2B81077B00F5F22C /* PersistenceManager.swift */,
 				462640182B7F995800F5F22C /* Views */,
 				462640132B7F916500F5F22C /* Models */,
 				462640052B7F90EF00F5F22C /* RickAndMortyTaskApp.swift */,
@@ -100,6 +103,7 @@
 		462640182B7F995800F5F22C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4626402B2B80F77C00F5F22C /* HomeView.swift */,
 				462640192B7F997300F5F22C /* CharactersListView.swift */,
 				4626401B2B7F998000F5F22C /* CharactersListViewModel.swift */,
 				4626401D2B7FA3C300F5F22C /* CharactersListCell.swift */,
@@ -108,7 +112,6 @@
 				462640232B80AC9A00F5F22C /* EpisodeCellView.swift */,
 				462640252B80AE1700F5F22C /* EpisodeDetailsView.swift */,
 				462640292B80DF8600F5F22C /* EpisodeDetailsViewModel.swift */,
-				4626402B2B80F77C00F5F22C /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				4626402C2B80F77C00F5F22C /* HomeView.swift in Sources */,
 				4626401A2B7F997300F5F22C /* CharactersListView.swift in Sources */,
 				462640152B7F918800F5F22C /* Models.swift in Sources */,
+				4626402E2B81077B00F5F22C /* PersistenceManager.swift in Sources */,
 				4626401E2B7FA3C300F5F22C /* CharactersListCell.swift in Sources */,
 				462640062B7F90EF00F5F22C /* RickAndMortyTaskApp.swift in Sources */,
 				4626402A2B80DF8600F5F22C /* EpisodeDetailsViewModel.swift in Sources */,

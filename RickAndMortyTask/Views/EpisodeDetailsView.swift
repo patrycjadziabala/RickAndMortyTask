@@ -35,7 +35,6 @@ struct EpisodeDetailsView: View {
                 }
                 Text("Number of characters in episode: \(viewModel.getNumberOfCharactersInEpisode())")
             }
-            
         }.onAppear {
             fetchEpisodeInfo()
         }

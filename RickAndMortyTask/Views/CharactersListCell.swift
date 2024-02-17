@@ -9,24 +9,34 @@ import SwiftUI
 
 struct CharactersListCell: View {
     let character: Character
+    @EnvironmentObject var persistanceManager: PersistenceManager
     
     var body: some View {
-        VStack {
+        VStack (alignment: .leading) {
             HStack {
                 AsyncImage(url: URL(string: character.image)) { image in
                     image.resizable()
                         .frame(maxWidth: 75, maxHeight: 75)
                         .cornerRadius(45)
-                        .padding()
                 } placeholder: {
                     ProgressView()
                 }
-                Spacer()
-                Text(character.name)
-                    .frame(alignment: .trailing)
+                HStack {
+                    Text(character.name)
+                        .frame(alignment: .trailing)
+                    Spacer()
+                    if persistanceManager.isPersisted(model: character) {
+                        Image(systemName: "star.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 35, height: 35)
+                            .foregroundColor(.yellow)
+                            .shadow(radius: 1)
+                    }
+                    Spacer()
+                }
             }
-            Divider()
-                .foregroundColor(.gray)
+            .scaledToFit()
         }
     }
 }

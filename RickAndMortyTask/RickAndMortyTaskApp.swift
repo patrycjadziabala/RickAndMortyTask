@@ -10,11 +10,14 @@ import SwiftUI
 @main
 struct RickAndMortyTaskApp: App {
     
+    @StateObject var persistanceManager: PersistenceManager = PersistenceManager()
+
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 HomeView()
             }
+            .environmentObject(persistanceManager)
         }
     }
 }

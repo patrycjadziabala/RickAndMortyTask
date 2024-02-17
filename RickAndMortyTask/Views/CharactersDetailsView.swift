@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CharactersDetailsView: View {
+    @EnvironmentObject var persistanceManager: PersistenceManager
     @ObservedObject var viewModel: CharacterDetailsViewModel
     
     var body: some View {
@@ -34,7 +35,7 @@ struct CharactersDetailsView: View {
                         Divider()
                         Text("Location")
                         Divider()
-                    } //vstack
+                    }
                     .font(Font.headline.weight(.bold))
                     .padding()
                     Divider()
@@ -49,19 +50,32 @@ struct CharactersDetailsView: View {
                         Divider()
                         Text(viewModel.character.location.name)
                         Divider()
-                    } //vstack
+                    }
                     .font(Font.headline.weight(.light))
                     .padding()
-                } //hstack
+                }
                 Text("Seen in episodes:")
                 ForEach(viewModel.character.episode, id: \.self) { urlString in
                     NavigationLink(destination: EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(apiManager: APIManager(), episodeId: viewModel.getEpisodeNumberString(url: urlString) ?? ""))) {
                         Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
                     }
                 }
-            } //vstack
+            }
         }
-    } //scrollview
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    persistanceManager.togglePersisted(model: viewModel.character)
+                } label: {
+                    Image(systemName: persistanceManager.isPersisted(model: viewModel.character) ? "star.fill" : "star")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.yellow)
+                        .shadow(radius: 1)
+                }
+            }
+        }
+    }
 }
 
 
