@@ -8,8 +8,7 @@
 import Foundation
 import SwiftUI
 
-// TODO move mainactor to view
-@MainActor class CharactersListViewModel: ObservableObject {
+class CharactersListViewModel: ObservableObject {
     private let apiManager: APIManagerProtocol
     @Published var charactersList = [Character]()
     @Published var episodesList = [String]()
