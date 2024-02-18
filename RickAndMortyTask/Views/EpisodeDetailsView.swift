@@ -48,6 +48,7 @@ struct EpisodeDetailsView: View {
         }
         .background(Image("galaxy-background")
             .resizable()
+            .edgesIgnoringSafeArea(.vertical)
             .scaledToFill()
             .opacity(0.7))
         .overlay {
@@ -59,7 +60,6 @@ struct EpisodeDetailsView: View {
         .onAppear {
             fetchEpisodeInfo()
         }
-        .padding()
         .alert(isPresented: $shouldShowAlert, content: {
             showAlert()
         })
