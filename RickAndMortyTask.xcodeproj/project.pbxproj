@@ -26,6 +26,7 @@
 		462640462B827E6300F5F22C /* CharactersListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640452B827E6300F5F22C /* CharactersListViewModelTests.swift */; };
 		462640482B827EFF00F5F22C /* MockAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640472B827EFF00F5F22C /* MockAPIManager.swift */; };
 		4626404A2B82933C00F5F22C /* CharacterDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640492B82933C00F5F22C /* CharacterDetailsViewModelTests.swift */; };
+		4626404C2B82980C00F5F22C /* EpisodeDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626404B2B82980C00F5F22C /* EpisodeDetailsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		462640452B827E6300F5F22C /* CharactersListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModelTests.swift; sourceTree = "<group>"; };
 		462640472B827EFF00F5F22C /* MockAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIManager.swift; sourceTree = "<group>"; };
 		462640492B82933C00F5F22C /* CharacterDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		4626404B2B82980C00F5F22C /* EpisodeDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				462640472B827EFF00F5F22C /* MockAPIManager.swift */,
 				462640452B827E6300F5F22C /* CharactersListViewModelTests.swift */,
 				462640492B82933C00F5F22C /* CharacterDetailsViewModelTests.swift */,
+				4626404B2B82980C00F5F22C /* EpisodeDetailsViewModelTests.swift */,
 			);
 			path = RickAndMortyTaskTests;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				462640482B827EFF00F5F22C /* MockAPIManager.swift in Sources */,
 				462640462B827E6300F5F22C /* CharactersListViewModelTests.swift in Sources */,
 				4626404A2B82933C00F5F22C /* CharacterDetailsViewModelTests.swift in Sources */,
+				4626404C2B82980C00F5F22C /* EpisodeDetailsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

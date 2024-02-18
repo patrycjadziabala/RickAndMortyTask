@@ -38,7 +38,7 @@ struct LocationModel: Codable, Equatable, Hashable {
     let url: String
 }
 
-struct EpisodeModel: Identifiable, Codable {
+struct EpisodeModel: Identifiable, Codable, Equatable {
     let id: Int
     let name: String
     let air_date: String

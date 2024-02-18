@@ -20,6 +20,8 @@ class MockApiManager: APIManagerProtocol {
     func fetchData<T>(endpoint: RickAndMortyTask.Endpoint, id: String?) async throws -> T? where T : Decodable, T : Encodable {
         if let apiModel = expectedApiModelFromEndpoint {
             return apiModel as? T
+        } else if let episodeModel =  expectedEpisodeModel  {
+            return episodeModel as? T
         } else if let error = apiModelError {
             throw error
         }
@@ -29,6 +31,7 @@ class MockApiManager: APIManagerProtocol {
     var expectedApiModelFromUrl: APIModel?
     var apiModelErrorFromUrl: Error?
     var urlsCalled: [String] = []
+    var expectedEpisodeModel: EpisodeModel?
     func fetchData<T>(url: String) async throws -> T? where T : Decodable, T : Encodable {
         urlsCalled.append(url)
         if let apiModelFromUrl = expectedApiModelFromUrl {
