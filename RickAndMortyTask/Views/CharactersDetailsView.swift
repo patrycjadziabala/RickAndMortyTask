@@ -59,10 +59,10 @@ struct CharactersDetailsView: View {
                     NavigationLink(destination: EpisodeDetailsView(id: viewModel.getEpisodeNumberString(url: urlString) ?? "")) {
                         HStack {
                             Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
-                                .foregroundColor(.white)
+                                .foregroundColor(.primary)
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .foregroundColor(.white)
+                                .foregroundColor(.primary)
                         }
                         .padding(10)
                         Divider()
