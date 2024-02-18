@@ -15,24 +15,36 @@ import SwiftUI
     @Published var episodesList = [String]()
     
     private var nextPageUrlString: String?
+    private var firstPageFetched = false
     
     init(apiManager: APIManagerProtocol) {
         self.apiManager = apiManager
     }
-    
+        
     func fetchNextPageCharacters() async throws {
-        if let nextPage = nextPageUrlString {
-            guard let downloadedCharacters: APIModel = try await apiManager.fetchData(url: nextPage) else {
-                return
-            }
-            nextPageUrlString = downloadedCharacters.info.next
-            charactersList.append(contentsOf: downloadedCharacters.results)
-        } else {
-            guard let downloadedCharacters: APIModel = try await apiManager.fetchData(endpoint: .character, id: nil) else {
-                return
-            }
-            nextPageUrlString = downloadedCharacters.info.next
-            charactersList = downloadedCharacters.results
+        guard let nextPage = nextPageUrlString else {
+            return
         }
+        guard let downloadedCharacters: APIModel = try await apiManager.fetchData(url: nextPage) else {
+            return
+        }
+        nextPageUrlString = downloadedCharacters.info.next
+        charactersList.append(contentsOf: downloadedCharacters.results)
+    }
+    
+    func fetchFirstPageIfNeeded() async throws {
+        guard firstPageFetched == false else {
+            return
+        }
+        guard let downloadedCharacters: APIModel = try await apiManager.fetchData(endpoint: .character, id: nil) else {
+            return
+        }
+        firstPageFetched = true
+        nextPageUrlString = downloadedCharacters.info.next
+        charactersList = downloadedCharacters.results
+    }
+    
+    func isCharacterLastInAlreadyFetched(character: Character) -> Bool {
+        character == charactersList.last
     }
 }

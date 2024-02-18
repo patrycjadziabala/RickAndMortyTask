@@ -14,16 +14,19 @@ struct CharactersListView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.charactersList, id: \.self) { character in
+            ForEach(viewModel.charactersList, id: \.self.hashValue) { character in
                 NavigationLink {
                     CharactersDetailsView(viewModel: CharacterDetailsViewModel(character: character))
                 } label: {
                     CharactersListCell(character: character)
+                        .onAppear {
+                            if viewModel.isCharacterLastInAlreadyFetched(character: character) {
+                                fetchNextPage()
+                            }
+                        }
+                        .frame(height: 75)
                 }
             }
-        }
-        .onAppear {
-            fetchCharacters()
         }
         .overlay {
             ProgressView()
@@ -35,9 +38,12 @@ struct CharactersListView: View {
         .alert(isPresented: $shouldShowAlert) {
            showAlert()
         }
+        .onAppear {
+            fetchFirstPageIfNeeded()
+        }
     }
     
-    func fetchCharacters() {
+    func fetchNextPage() {
         Task {
             do {
                 try await viewModel.fetchNextPageCharacters()
@@ -48,10 +54,21 @@ struct CharactersListView: View {
         }
     }
     
+    func fetchFirstPageIfNeeded() {
+        Task {
+            do {
+                try await viewModel.fetchFirstPageIfNeeded()
+                shouldShowProgressIndicator = false
+            } catch {
+                shouldShowAlert = true
+            }
+        }
+    }
+    
     func showAlert() -> Alert {
         Alert(title: Text("Something went wrong..."),
               primaryButton: .default(Text("Retry"), action: {
-            fetchCharacters()
+            fetchNextPage()
         }),
               secondaryButton: .cancel(Text("Cancel"), action: {
             shouldShowAlert = false
