@@ -11,8 +11,7 @@ import SwiftUI
 @MainActor class CharactersListViewModel: ObservableObject {
     private let apiManager: APIManagerProtocol
     @Published var charactersList = [Character]()
-    @Published var episodesList = [String]()
-    
+
     private var nextPageUrlString: String?
     private var firstPageFetched = false
     
