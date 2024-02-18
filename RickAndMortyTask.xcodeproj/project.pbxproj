@@ -22,6 +22,7 @@
 		4626402A2B80DF8600F5F22C /* EpisodeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462640292B80DF8600F5F22C /* EpisodeDetailsViewModel.swift */; };
 		4626402C2B80F77C00F5F22C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626402B2B80F77C00F5F22C /* HomeView.swift */; };
 		4626402E2B81077B00F5F22C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626402D2B81077B00F5F22C /* PersistenceManager.swift */; };
+		462640312B82039900F5F22C /* Creepster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462640302B82039900F5F22C /* Creepster-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		462640292B80DF8600F5F22C /* EpisodeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewModel.swift; sourceTree = "<group>"; };
 		4626402B2B80F77C00F5F22C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4626402D2B81077B00F5F22C /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		462640302B82039900F5F22C /* Creepster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Creepster-Regular.ttf"; path = "../../../../Downloads/Creepster/Creepster-Regular.ttf"; sourceTree = "<group>"; };
+		462640322B8203C900F5F22C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 		462640042B7F90EF00F5F22C /* RickAndMortyTask */ = {
 			isa = PBXGroup;
 			children = (
+				462640322B8203C900F5F22C /* Info.plist */,
+				4626402F2B82035800F5F22C /* Fonts */,
 				462640162B7F971100F5F22C /* APIManager.swift */,
 				4626402D2B81077B00F5F22C /* PersistenceManager.swift */,
 				462640182B7F995800F5F22C /* Views */,
@@ -114,6 +119,14 @@
 				462640292B80DF8600F5F22C /* EpisodeDetailsViewModel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4626402F2B82035800F5F22C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				462640302B82039900F5F22C /* Creepster-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +189,7 @@
 			files = (
 				4626400D2B7F90EF00F5F22C /* Preview Assets.xcassets in Resources */,
 				4626400A2B7F90EF00F5F22C /* Assets.xcassets in Resources */,
+				462640312B82039900F5F22C /* Creepster-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +344,7 @@
 				DEVELOPMENT_TEAM = 22NX7WBF6A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RickAndMortyTask/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -360,6 +375,7 @@
 				DEVELOPMENT_TEAM = 22NX7WBF6A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RickAndMortyTask/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

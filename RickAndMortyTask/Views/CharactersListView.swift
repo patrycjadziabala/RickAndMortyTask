@@ -42,12 +42,10 @@ struct CharactersListView: View {
             do {
                 try await viewModel.fetchNextPageCharacters()
                 shouldShowProgressIndicator = false
-                print(shouldShowProgressIndicator)
             } catch {
                 shouldShowAlert = true
             }
         }
-        
     }
     
     func showAlert() -> Alert {

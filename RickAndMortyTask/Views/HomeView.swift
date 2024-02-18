@@ -10,12 +10,46 @@ import SwiftUI
 struct HomeView: View {
     
     var body: some View {
-        VStack {
-            Text("Press button to load characters list")
-            NavigationLink(destination: CharactersListView()) {
-                Text("Press here")
+        ZStack {
+            Image("galaxy-background")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.vertical)
+            VStack {
+                Image("titleImage")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 350)
+                    .padding()
+                Text("Press button to load characters list")
+                    .font(.custom("Creepster-Regular", size: 20))
+                    .padding()
+                Button {
+                    print("")
+                } label: {
+                    NavigationLink(destination: CharactersListView()) {
+                        Text("Press here")
+                            .font(.custom("Creepster-Regular", size: 15))
+                            .foregroundColor(.black)
+                            .shadow(radius: 1)
+                    }
+                }
+                .padding([.top, .bottom, .leading, .trailing], 2)
+                .padding([.leading, .trailing])
+                .background(
+                    Capsule()
+                        .strokeBorder(lineWidth: 2)
+                        .foregroundColor(.black)
+                        .shadow(radius: 1)
+                )
             }
         }
+       
+//        .background(
+//        Image("galaxy-background")
+//            .resizable()
+//            .scaledToFill()
+//        )
     }
 }
 

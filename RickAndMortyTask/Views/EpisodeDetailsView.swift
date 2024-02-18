@@ -20,7 +20,7 @@ struct EpisodeDetailsView: View {
     var body: some View {
         ScrollView {
             if let episode = viewModel.episode {
-                LazyVGrid(columns: [GridItem( .fixed(100), alignment: .trailing), GridItem(alignment: .leading)], spacing: 20) {
+                LazyVGrid(columns: [GridItem(.fixed(100), alignment: .topTrailing), GridItem(alignment: .topLeading)], spacing: 20) {
                     Text("Name:")
                     Text(episode.name)
                         .padding(.leading)
@@ -30,8 +30,11 @@ struct EpisodeDetailsView: View {
                     Text("Episode:")
                     Text(episode.episode)
                         .padding(.leading)
+                    Text("Number of characters in episode:")
+                        .multilineTextAlignment(.trailing)
+                    Text("\(viewModel.getNumberOfCharactersInEpisode())")
+                        .padding(.leading)
                 }
-                Text("Number of characters in episode: \(viewModel.getNumberOfCharactersInEpisode())")
             }
         }
         .overlay {

@@ -23,35 +23,43 @@ struct CharactersDetailsView: View {
                     ProgressView()
                 }
                 Spacer()
-                LazyVGrid(columns: [GridItem( .fixed(100), alignment: .leading), GridItem(alignment: .leading)], spacing: 20) {
-                    Text("Name")
-                        .padding(.leading)
-                        .padding(5)
+                LazyVGrid(columns: [GridItem( .fixed(100), alignment: .topLeading), GridItem(alignment: .topLeading)], spacing: 20) {
+                    Text("Name:")
+                        .padding(.leading, 20)
                     Text(viewModel.character.name)
-                    Text("Status")
-                        .padding(.leading)
-                        .padding(5)
+                    Text("Status:")
+                        .padding(.leading, 20)
                     Text(viewModel.character.status)
-                    Text("Gender")
-                        .padding(.leading)
-                        .padding(5)
+                    Text("Gender:")
+                        .padding(.leading, 20)
                     Text(viewModel.character.gender)
-                    Text("Origin")
-                        .padding(.leading)
-                        .padding(5)
+                    Text("Origin:")
+                        .padding(.leading, 20)
                     Text(viewModel.character.origin.name)
-                    Text("Location")
+                    Text("Location:")
                         .padding(.leading)
-                        .padding(5)
                     Text(viewModel.character.location.name)
+                    
                 }
 //                HStack
                 Text("Seen in episodes:")
+//                List {
+//                    ForEach(viewModel.character.episode, id: \.self) {
+//                        NavigationLink {
+//                            EpisodeDetailsView(id: viewModel.getEpisodeNumberString(url: urlString) ?? ""))
+//                        } label: {
+//                            Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
+//                        }
+//                    }
+//                }
+                
+                
                 ForEach(viewModel.character.episode, id: \.self) { urlString in
                     NavigationLink(destination: EpisodeDetailsView(id: viewModel.getEpisodeNumberString(url: urlString) ?? "")) {
                         Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
                     }
                 }
+          
             }
         }
         .navigationTitle("Character Details")
