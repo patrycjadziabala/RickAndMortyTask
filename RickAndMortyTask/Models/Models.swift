@@ -17,9 +17,9 @@ struct InfoModel: Codable {
     let prev: String?
 }
 
-struct Character: Identifiable, Codable, Equatable {
+struct Character: Identifiable, Codable, Equatable, Hashable {
     let id: Int
-    let name : String
+    let name: String
     let status: String
     let gender: String
     let origin: OriginModel
@@ -28,17 +28,17 @@ struct Character: Identifiable, Codable, Equatable {
     let episode: [String]
 }
 
-struct OriginModel: Codable, Equatable {
+struct OriginModel: Codable, Equatable, Hashable {
     let name: String
     let url: String
 }
 
-struct LocationModel: Codable, Equatable {
+struct LocationModel: Codable, Equatable, Hashable {
     let name: String
     let url: String
 }
 
-struct EpisodeModel: Identifiable,Codable {
+struct EpisodeModel: Identifiable, Codable {
     let id: Int
     let name: String
     let air_date: String

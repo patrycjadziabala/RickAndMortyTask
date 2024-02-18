@@ -14,7 +14,7 @@ struct CharactersListView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.charactersList, id: \.id) { character in
+            ForEach(viewModel.charactersList, id: \.self) { character in
                 NavigationLink {
                     CharactersDetailsView(viewModel: CharacterDetailsViewModel(character: character))
                 } label: {
