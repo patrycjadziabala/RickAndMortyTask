@@ -15,6 +15,7 @@ struct HomeView: View {
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.vertical)
+                .opacity(0.9)
             VStack {
                 Image("titleImage")
                     .resizable()
@@ -22,19 +23,19 @@ struct HomeView: View {
                     .frame(maxWidth: 350)
                     .padding()
                 Text("Press button to load characters list")
-                    .font(.custom("Creepster-Regular", size: 20))
+                    .font(.custom("Creepster-Regular", size: 23))
                     .padding()
                 Button {
                     print("")
                 } label: {
                     NavigationLink(destination: CharactersListView()) {
                         Text("Press here")
-                            .font(.custom("Creepster-Regular", size: 15))
+                            .font(.custom("Creepster-Regular", size: 20))
                             .foregroundColor(.black)
                             .shadow(radius: 1)
                     }
                 }
-                .padding([.top, .bottom, .leading, .trailing], 2)
+                .padding([.top, .bottom, .leading, .trailing], 3)
                 .padding([.leading, .trailing])
                 .background(
                     Capsule()
@@ -44,12 +45,6 @@ struct HomeView: View {
                 )
             }
         }
-       
-//        .background(
-//        Image("galaxy-background")
-//            .resizable()
-//            .scaledToFill()
-//        )
     }
 }
 

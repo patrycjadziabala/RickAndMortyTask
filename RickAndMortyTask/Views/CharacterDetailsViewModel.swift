@@ -13,7 +13,7 @@ class CharacterDetailsViewModel: ObservableObject {
     init(character: Character) {
         self.character = character
     }
-
+    
     func getEpisodeNumberFromEpisodeUrl(url: String) -> Int? {
         let episodeNumber = url.components(separatedBy: "/").last
         return Int(episodeNumber ?? "")

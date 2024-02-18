@@ -22,21 +22,34 @@ struct EpisodeDetailsView: View {
             if let episode = viewModel.episode {
                 LazyVGrid(columns: [GridItem(.fixed(100), alignment: .topTrailing), GridItem(alignment: .topLeading)], spacing: 20) {
                     Text("Name:")
+                        .font(Font.headline.weight(.bold))
                     Text(episode.name)
                         .padding(.leading)
+                        .font(Font.headline.weight(.light))
                     Text("Air date:")
+                        .font(Font.headline.weight(.bold))
                     Text(episode.air_date)
+                        .font(Font.headline.weight(.light))
                         .padding(.leading)
                     Text("Episode:")
+                        .font(Font.headline.weight(.bold))
                     Text(episode.episode)
+                        .font(Font.headline.weight(.light))
                         .padding(.leading)
                     Text("Number of characters in episode:")
+                        .font(Font.headline.weight(.bold))
                         .multilineTextAlignment(.trailing)
                     Text("\(viewModel.getNumberOfCharactersInEpisode())")
+                        .font(Font.headline.weight(.light))
                         .padding(.leading)
                 }
+                .padding()
             }
         }
+        .background(Image("galaxy-background")
+            .resizable()
+            .scaledToFill()
+            .opacity(0.7))
         .overlay {
             ProgressView()
                 .scaleEffect(2, anchor: .center)
