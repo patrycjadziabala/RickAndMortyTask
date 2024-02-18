@@ -22,6 +22,7 @@
 		4626402C2B80F77C00F5F22C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626402B2B80F77C00F5F22C /* HomeView.swift */; };
 		4626402E2B81077B00F5F22C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626402D2B81077B00F5F22C /* PersistenceManager.swift */; };
 		462640312B82039900F5F22C /* Creepster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462640302B82039900F5F22C /* Creepster-Regular.ttf */; };
+		462640372B82462F00F5F22C /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 462640362B82462F00F5F22C /* CachedAsyncImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462640372B82462F00F5F22C /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +144,9 @@
 			dependencies = (
 			);
 			name = RickAndMortyTask;
+			packageProductDependencies = (
+				462640362B82462F00F5F22C /* CachedAsyncImage */,
+			);
 			productName = RickAndMortyTask;
 			productReference = 462640022B7F90EF00F5F22C /* RickAndMortyTask.app */;
 			productType = "com.apple.product-type.application";
@@ -170,6 +175,9 @@
 				Base,
 			);
 			mainGroup = 46263FF92B7F90EF00F5F22C;
+			packageReferences = (
+				462640352B82462F00F5F22C /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = 462640032B7F90EF00F5F22C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -413,6 +421,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		462640352B82462F00F5F22C /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		462640362B82462F00F5F22C /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 462640352B82462F00F5F22C /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 46263FFA2B7F90EF00F5F22C /* Project object */;
 }

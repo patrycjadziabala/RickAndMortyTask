@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct CharactersListCell: View {
     let character: Character
@@ -14,7 +15,7 @@ struct CharactersListCell: View {
     var body: some View {
             VStack (alignment: .leading) {
                 HStack {
-                    AsyncImage(url: URL(string: character.image)) { image in
+                    CachedAsyncImage(url: URL(string: character.image)) { image in
                         image.resizable()
                             .frame(maxWidth: 75, maxHeight: 75)
                             .cornerRadius(45)

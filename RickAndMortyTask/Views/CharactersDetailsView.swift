@@ -54,24 +54,19 @@ struct CharactersDetailsView: View {
                 Text("Seen in episodes:")
                     .font(Font.headline.weight(.bold))
                     .padding()
-//                List {
-//                    ForEach(viewModel.character.episode, id: \.self) {
-//                        NavigationLink {
-//                            EpisodeDetailsView(id: viewModel.getEpisodeNumberString(url: urlString) ?? ""))
-//                        } label: {
-//                            Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
-//                        }
-//                    }
-//                }
-//                List(viewModel.character.episode, id: \.self) { urlString in
-//                    NavigationLink(destination: EpisodeDetailsView(id: viewModel.getEpisodeNumberString(url: urlString) ?? "")) {
-//                        Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
-//                    }
-//                }
                 
                 ForEach(viewModel.character.episode, id: \.self) { urlString in
                     NavigationLink(destination: EpisodeDetailsView(id: viewModel.getEpisodeNumberString(url: urlString) ?? "")) {
-                        Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
+                        HStack {
+                            Text("Episode \(viewModel.getEpisodeNumberString(url: urlString) ?? "")")
+                                .foregroundColor(.white)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.white)
+                        }
+                        .padding(10)
+                        Divider()
+                            .foregroundColor(.gray)
                     }
                 }
             }
@@ -79,7 +74,8 @@ struct CharactersDetailsView: View {
         .background(Image("galaxy-background")
             .resizable()
             .scaledToFill()
-            .opacity(0.8))
+            .opacity(0.8)
+            .ignoresSafeArea())
         .navigationTitle("Character Details")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
